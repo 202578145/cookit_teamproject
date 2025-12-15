@@ -48,10 +48,24 @@
             <h2>All Recipes</h2>
             <div class="recipe-grid">
                 
+                <a href="friedrice.html" style="text-decoration: none; color: inherit;">
+                    <div class="recipe-card">
+                        <img src="https://via.placeholder.com/300x200/FDD835/FFFFFF?text=Egg+Fried+Rice" alt="Egg Fried Rice">
+                        <h4>Egg Fried Rice</h4>
+                    </div>
+                </a>
+
                 <a href="pasta.html" style="text-decoration: none; color: inherit;">
                     <div class="recipe-card">
                         <img src="https://via.placeholder.com/300x200/FFD166/FFFFFF?text=Pasta" alt="Pasta Carbonara">
                         <h4>Pasta Carbonara</h4>
+                    </div>
+                </a>
+
+                <a href="kimchi.html" style="text-decoration: none; color: inherit;">
+                    <div class="recipe-card">
+                        <img src="https://via.placeholder.com/300x200/FF6B35/FFFFFF?text=Kimchi+Stew" alt="Kimchi Stew">
+                        <h4>Kimchi Stew</h4>
                     </div>
                 </a>
 
@@ -90,6 +104,13 @@
                     </div>
                 </a>
 
+                <a href="sherbet.html" style="text-decoration: none; color: inherit;">
+                    <div class="recipe-card">
+                        <img src="https://via.placeholder.com/300x200/E91E63/FFFFFF?text=Fruit+Sherbet" alt="Fruit Sherbet">
+                        <h4>Fruit Sherbet</h4>
+                    </div>
+                </a>
+
             </div>
         </section>
     </main>
@@ -100,7 +121,7 @@
 
     <script>
         function changeMenu() {
-            // 모든 메뉴를 리스트에 등록했습니다 (총 7개)
+            // 메뉴 리스트 업데이트 (총 9개)
             const menus = [
                 {
                     name: "Spicy Kimchi Stew",
@@ -136,14 +157,22 @@
                     name: "Chicken Curry",
                     img: "https://via.placeholder.com/600x400/FBC02D/FFFFFF?text=Chicken+Curry",
                     link: "curry.html"
+                },
+                {
+                    name: "Egg Fried Rice",
+                    img: "https://via.placeholder.com/600x400/FDD835/FFFFFF?text=Egg+Fried+Rice",
+                    link: "friedrice.html"
+                },
+                {
+                    name: "Fruit Sherbet",
+                    img: "https://via.placeholder.com/600x400/E91E63/FFFFFF?text=Fruit+Sherbet",
+                    link: "sherbet.html"
                 }
             ];
 
-            // 랜덤 숫자 뽑기
             const randomIndex = Math.floor(Math.random() * menus.length);
             const selectedMenu = menus[randomIndex];
 
-            // 화면 내용 바꾸기
             document.getElementById("today-title").innerText = selectedMenu.name;
             document.getElementById("today-img").src = selectedMenu.img;
             document.getElementById("today-link").href = selectedMenu.link;
