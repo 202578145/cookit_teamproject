@@ -6,6 +6,7 @@
 > **University Team Project**
 > * 📅 **개발 기간:** 2025.12.15 (약 6시간)
 > * 🛠 **사용 기술:** HTML5, CSS3, JavaScript (Vanilla)
+> * 🧑‍🎓 정윤서 (202578145)
 
 ---
 
