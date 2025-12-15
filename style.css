@@ -363,3 +363,22 @@ footer {
         display: none; /* 모바일에서 버튼 숨김 */
     }
 }
+
+/* --- style.css 맨 아래에 추가 --- */
+
+/* 떨어지는 음식 이모지 스타일 */
+.food-emoji {
+    position: fixed; /* 화면에 고정 */
+    top: -50px; /* 화면 위쪽 바깥에서 시작 */
+    font-size: 24px;
+    z-index: 9999; /* 다른 요소들보다 위에 보이게 */
+    pointer-events: none; /* 마우스 클릭 방해 안 하게 */
+    animation: fall linear forwards; /* fall 애니메이션 실행 */
+}
+
+/* 위에서 아래로 떨어지는 애니메이션 정의 */
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg); /* 화면 아래로 이동하며 회전 */
+    }
+}

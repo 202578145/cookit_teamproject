@@ -31,10 +31,22 @@
                     <button class="find-btn" onclick="goSearch()">Find Recipes</button>
                 </div>
                 <div class="tags">
-                    <span>🥚 Eggs</span>
-                    <span>🧅 Onion</span>
-                    <span>🍅 Tomato</span>
-                </div>
+    <a href="https://github.com/202578145/cookit_teamproject" target="_blank" style="text-decoration: none; color: inherit;">
+        <span>🐙 GitHub</span>
+    </a>
+
+    <span onclick="toggleSound()" style="cursor: pointer;">
+        <span id="sound-icon">🔇</span> <span id="sound-text">BGM Off</span>
+    </span>
+
+    <span onclick="toggleRain()" style="cursor: pointer;">
+    <span id="rain-icon">🌧️</span> <span id="rain-text">Food Rain</span>
+</span>
+</div>
+
+<audio id="bgmAudio" loop>
+    <source src="bgm.mp3" type="audio/mp3">
+</audio>
             </div>
         </section>
 
@@ -116,6 +128,81 @@
             }
             window.location.href = "search.html?q=" + encodeURIComponent(input);
         }
+
+        // --- 스피커 아이콘 & 음악 토글 기능 ---
+function toggleSound() {
+    const audio = document.getElementById('bgmAudio');
+    const icon = document.getElementById('sound-icon');
+    const text = document.getElementById('sound-text');
+
+    if (audio.paused) {
+        // 음악이 꺼져있다면 -> 켠다!
+        audio.play().catch(error => {
+            alert("음악 파일을 재생할 수 없어요! (bgm.mp3가 있는지 확인하세요)");
+        });
+        icon.innerText = "🔊"; // 아이콘을 소리 나는 모양으로 변경
+        text.innerText = "BGM On";
+    } else {
+        // 음악이 켜져있다면 -> 끈다!
+        audio.pause();
+        icon.innerText = "🔇"; // 아이콘을 음소거 모양으로 변경
+        text.innerText = "BGM Off";
+    }
+}
+
+// --- 재료 비 내리기 효과 기능 ---
+let rainInterval; // 비 내리는 타이머를 저장할 변수
+
+function toggleRain() {
+    const icon = document.getElementById('rain-icon');
+    const text = document.getElementById('rain-text');
+    const container = document.body; // 이모지가 내릴 공간
+
+    if (rainInterval) {
+        // 이미 내리고 있다면 -> 멈춘다!
+        clearInterval(rainInterval);
+        rainInterval = null;
+        icon.innerText = "🌧️";
+        text.innerText = "Food Rain";
+        
+        // 화면에 남아있는 음식들 싹 지우기
+        const foods = document.querySelectorAll('.food-emoji');
+        foods.forEach(e => e.remove());
+        
+    } else {
+        // 안 내리고 있다면 -> 내리게 한다!
+        icon.innerText = "☀️"; // 멈춤(해) 아이콘으로 변경
+        text.innerText = "Stop Rain";
+
+        // 떨어질 음식 재료 리스트
+        const foodList = ['🥦', '🥕', '🍎', '🥩', '🍤', '🍳', '🧀', '🥓', '🧅', '🍄'];
+
+        // 0.3초마다 하나씩 생성
+        rainInterval = setInterval(() => {
+            const el = document.createElement('div');
+            el.classList.add('food-emoji');
+            
+            // 랜덤한 음식 고르기
+            el.innerText = foodList[Math.floor(Math.random() * foodList.length)];
+            
+            // 랜덤한 위치(가로)에서 시작
+            el.style.left = Math.random() * 100 + 'vw';
+            
+            // 떨어지는 속도 랜덤하게 (2초 ~ 5초 사이)
+            el.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            
+            // 크기 랜덤하게
+            el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+
+            container.appendChild(el);
+
+            // 5초 뒤에 스스로 사라지게 (메모리 관리)
+            setTimeout(() => {
+                el.remove();
+            }, 5000);
+        }, 300);
+    }
+}
     </script>
 </body>
 </html>
