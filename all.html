@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookit - 전체 메뉴</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 가로형 카드 디자인 (검색 결과와 동일) */
+        .all-list { display: flex; flex-direction: column; gap: 20px; }
+        .list-card {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .list-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .list-img { width: 150px; height: 150px; object-fit: cover; }
+        .list-info { padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+        .list-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333; }
+        .list-subtitle { font-size: 0.9rem; color: #666; }
+
+        @media (max-width: 600px) {
+            .list-img { width: 100px; height: 100px; }
+            .list-info { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" style="text-decoration: none;">
+            <h1 class="logo">Cookit</h1>
+        </a>
+    </header>
+
+    <main class="container">
+        <h2 style="text-align:center; margin: 40px 0;">All Recipes (전체 메뉴)</h2>
+
+        <div class="all-list">
+            <a href="friedrice.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/FDD835/FFFFFF?text=Egg+Fried+Rice" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Egg Fried Rice (계란 볶음밥)</div>
+                    <div class="list-subtitle">고소한 파기름과 부드러운 계란의 조화!</div>
+                </div>
+            </a>
+
+            <a href="pasta.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/FFD166/FFFFFF?text=Pasta" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Pasta Carbonara (크림 파스타)</div>
+                    <div class="list-subtitle">꾸덕하고 고소한 크림 소스의 풍미</div>
+                </div>
+            </a>
+
+            <a href="kimchi.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/FF6B35/FFFFFF?text=Kimchi+Stew" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Spicy Kimchi Stew (김치찌개)</div>
+                    <div class="list-subtitle">한국인의 소울푸드, 얼큰한 맛</div>
+                </div>
+            </a>
+
+            <a href="toast.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/81C784/FFFFFF?text=Avocado+Toast" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Avocado Toast (아보카도 토스트)</div>
+                    <div class="list-subtitle">홈카페 감성 브런치</div>
+                </div>
+            </a>
+
+            <a href="salmon.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/FF8A80/FFFFFF?text=Salmon+Salad" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Salmon Salad (연어 샐러드)</div>
+                    <div class="list-subtitle">신선하고 가벼운 다이어트 한 끼</div>
+                </div>
+            </a>
+
+            <a href="bibimbap.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/FF5722/FFFFFF?text=Bibimbap" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Bibimbap (비빔밥)</div>
+                    <div class="list-subtitle">건강한 야채가 가득한 한 그릇</div>
+                </div>
+            </a>
+
+            <a href="steak.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/073B4C/FFFFFF?text=Steak" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Beef Steak (스테이크)</div>
+                    <div class="list-subtitle">육즙 가득한 럭셔리 저녁</div>
+                </div>
+            </a>
+
+            <a href="curry.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/FBC02D/FFFFFF?text=Curry" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Chicken Curry (치킨 카레)</div>
+                    <div class="list-subtitle">밥도둑 치킨 카레</div>
+                </div>
+            </a>
+
+            <a href="sherbet.html" class="list-card">
+                <img src="https://via.placeholder.com/300x200/E91E63/FFFFFF?text=Fruit+Sherbet" class="list-img">
+                <div class="list-info">
+                    <div class="list-title">Fruit Sherbet (과일 샤베트)</div>
+                    <div class="list-subtitle">시원하고 상큼한 디저트</div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 Cookit. For University Project.</p>
+    </footer>
+</body>
+</html>

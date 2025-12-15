@@ -6,6 +6,16 @@
     <title>Cookit - 오늘의 요리를 찾아보세요</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .view-more-link {
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px;
+            border: 2px solid #FF6B35; border-radius: 50%;
+            color: #FF6B35; font-weight: bold; font-size: 1.2rem;
+            text-decoration: none; transition: 0.3s;
+        }
+        .view-more-link:hover { background: #FF6B35; color: white; }
+    </style>
 </head>
 <body>
 
@@ -30,11 +40,9 @@
 
         <section class="container todays-pick">
             <h2>Today's Pick</h2>
-            
             <a id="today-link" href="kimchi.html" style="text-decoration: none; color: inherit;">
                 <div class="pick-card">
                     <img id="today-img" src="https://via.placeholder.com/600x400/FF6B35/FFFFFF?text=Spicy+Kimchi+Stew" style="width:100%; height:300px; object-fit:cover; border-radius: 15px 15px 0 0;">
-                    
                     <div class="card-content">
                         <h3 id="today-title">Spicy Kimchi Stew</h3>
                         <p>오늘의 추천 메뉴를 확인해보세요!</p>
@@ -45,13 +53,12 @@
         </section>
 
         <section class="container all-recipes">
-            <div class="recipe-header-box">
+            <div class="recipe-header-box" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
                 <h2>All Recipes</h2>
-                <button id="view-more-btn" onclick="toggleRecipes()" title="더 보기">&gt;</button>
+                <a href="all.html" class="view-more-link" title="전체 보기">&gt;</a>
             </div>
 
-            <div class="recipe-grid" id="recipe-list">
-                
+            <div class="recipe-grid">
                 <a href="friedrice.html" style="text-decoration: none; color: inherit;">
                     <div class="recipe-card">
                         <img src="https://via.placeholder.com/300x200/FDD835/FFFFFF?text=Egg+Fried+Rice" alt="Egg Fried Rice">
@@ -72,49 +79,6 @@
                         <h4>Kimchi Stew</h4>
                     </div>
                 </a>
-
-                <a href="toast.html" style="text-decoration: none; color: inherit;">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/81C784/FFFFFF?text=Avocado+Toast" alt="Avocado Toast">
-                        <h4>Avocado Toast</h4>
-                    </div>
-                </a>
-
-                <a href="salmon.html" style="text-decoration: none; color: inherit;">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/FF8A80/FFFFFF?text=Salmon+Salad" alt="Salmon Salad">
-                        <h4>Salmon Salad</h4>
-                    </div>
-                </a>
-
-                <a href="bibimbap.html" style="text-decoration: none; color: inherit;">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/FF5722/FFFFFF?text=Bibimbap" alt="Bibimbap">
-                        <h4>Bibimbap</h4>
-                    </div>
-                </a>
-
-                <a href="steak.html" style="text-decoration: none; color: inherit;">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/073B4C/FFFFFF?text=Steak" alt="Beef Steak">
-                        <h4>Beef Steak</h4>
-                    </div>
-                </a>
-
-                <a href="curry.html" style="text-decoration: none; color: inherit;">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/FBC02D/FFFFFF?text=Chicken+Curry" alt="Chicken Curry">
-                        <h4>Chicken Curry</h4>
-                    </div>
-                </a>
-
-                <a href="sherbet.html" style="text-decoration: none; color: inherit;">
-                    <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/E91E63/FFFFFF?text=Fruit+Sherbet" alt="Fruit Sherbet">
-                        <h4>Fruit Sherbet</h4>
-                    </div>
-                </a>
-
             </div>
         </section>
     </main>
@@ -125,62 +89,22 @@
 
     <script>
         function changeMenu() {
-            // 메뉴 리스트 업데이트 (총 9개)
             const menus = [
-                {
-                    name: "Spicy Kimchi Stew",
-                    img: "https://via.placeholder.com/600x400/FF6B35/FFFFFF?text=Kimchi+Stew",
-                    link: "kimchi.html"
-                },
-                {
-                    name: "Cream Pasta",
-                    img: "https://via.placeholder.com/600x400/FFD166/FFFFFF?text=Cream+Pasta",
-                    link: "pasta.html"
-                },
-                {
-                    name: "Beef Steak",
-                    img: "https://via.placeholder.com/600x400/073B4C/FFFFFF?text=Beef+Steak",
-                    link: "steak.html"
-                },
-                {
-                    name: "Avocado Toast",
-                    img: "https://via.placeholder.com/600x400/81C784/FFFFFF?text=Avocado+Toast",
-                    link: "toast.html"
-                },
-                {
-                    name: "Salmon Salad",
-                    img: "https://via.placeholder.com/600x400/FF8A80/FFFFFF?text=Salmon+Salad",
-                    link: "salmon.html"
-                },
-                {
-                    name: "Bibimbap",
-                    img: "https://via.placeholder.com/600x400/FF5722/FFFFFF?text=Bibimbap",
-                    link: "bibimbap.html"
-                },
-                {
-                    name: "Chicken Curry",
-                    img: "https://via.placeholder.com/600x400/FBC02D/FFFFFF?text=Chicken+Curry",
-                    link: "curry.html"
-                },
-                {
-                    name: "Egg Fried Rice",
-                    img: "https://via.placeholder.com/600x400/FDD835/FFFFFF?text=Egg+Fried+Rice",
-                    link: "friedrice.html"
-                },
-                {
-                    name: "Fruit Sherbet",
-                    img: "https://via.placeholder.com/600x400/E91E63/FFFFFF?text=Fruit+Sherbet",
-                    link: "sherbet.html"
-                }
+                { name: "Spicy Kimchi Stew", img: "https://via.placeholder.com/600x400/FF6B35/FFFFFF?text=Kimchi+Stew", link: "kimchi.html" },
+                { name: "Cream Pasta", img: "https://via.placeholder.com/600x400/FFD166/FFFFFF?text=Cream+Pasta", link: "pasta.html" },
+                { name: "Beef Steak", img: "https://via.placeholder.com/600x400/073B4C/FFFFFF?text=Beef+Steak", link: "steak.html" },
+                { name: "Avocado Toast", img: "https://via.placeholder.com/600x400/81C784/FFFFFF?text=Avocado+Toast", link: "toast.html" },
+                { name: "Salmon Salad", img: "https://via.placeholder.com/600x400/FF8A80/FFFFFF?text=Salmon+Salad", link: "salmon.html" },
+                { name: "Bibimbap", img: "https://via.placeholder.com/600x400/FF5722/FFFFFF?text=Bibimbap", link: "bibimbap.html" },
+                { name: "Chicken Curry", img: "https://via.placeholder.com/600x400/FBC02D/FFFFFF?text=Chicken+Curry", link: "curry.html" },
+                { name: "Egg Fried Rice", img: "https://via.placeholder.com/600x400/FDD835/FFFFFF?text=Egg+Fried+Rice", link: "friedrice.html" },
+                { name: "Fruit Sherbet", img: "https://via.placeholder.com/600x400/E91E63/FFFFFF?text=Fruit+Sherbet", link: "sherbet.html" }
             ];
-
             const randomIndex = Math.floor(Math.random() * menus.length);
             const selectedMenu = menus[randomIndex];
-
             document.getElementById("today-title").innerText = selectedMenu.name;
             document.getElementById("today-img").src = selectedMenu.img;
             document.getElementById("today-link").href = selectedMenu.link;
-
             alert("오늘의 메뉴가 '" + selectedMenu.name + "'(으)로 변경되었습니다!");
         }
 
@@ -192,23 +116,6 @@
             }
             window.location.href = "search.html?q=" + encodeURIComponent(input);
         }
-
-        // ▼▼ 추가됨: 더 보기 버튼 기능 함수 ▼▼
-        function toggleRecipes() {
-            const list = document.getElementById('recipe-list');
-            const btn = document.getElementById('view-more-btn');
-
-            list.classList.toggle('expanded');
-
-            if (list.classList.contains('expanded')) {
-                btn.innerHTML = "&and;"; // 접기 모양(∧)
-                btn.title = "접기";
-            } else {
-                btn.innerHTML = "&gt;"; // 더보기 모양(>)
-                btn.title = "더 보기";
-            }
-        }
     </script>
-
 </body>
 </html>
