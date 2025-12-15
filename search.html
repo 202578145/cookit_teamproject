@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookit - 검색 결과</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 검색 결과 페이지 전용 스타일 (스케치 반영) */
+        .search-header { text-align: center; margin: 40px 0; }
+        .result-count { color: #FF6B35; font-weight: bold; }
+        
+        /* 가로형 카드 디자인 */
+        .result-card {
+            display: flex; /* 가로 배치 */
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px; /* 카드 사이 간격 */
+            overflow: hidden;
+            transition: transform 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .result-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        
+        .result-img {
+            width: 150px; /* 사진 크기 고정 */
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .result-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .result-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333; }
+        .result-subtitle { font-size: 0.9rem; color: #666; }
+        .no-result { text-align: center; padding: 50px; color: #999; font-size: 1.2rem; }
+
+        @media (max-width: 600px) {
+            .result-card { flex-direction: row; } /* 모바일에서도 가로 유지 */
+            .result-img { width: 100px; height: 100px; }
+            .result-info { padding: 15px; }
+            .result-title { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" style="text-decoration: none;">
+            <h1 class="logo">Cookit</h1>
+        </a>
+    </header>
+
+    <main class="container">
+        <div class="search-header">
+            <h2>'<span id="search-keyword"></span>' 검색 결과</h2>
+            <p><span id="result-count" class="result-count">0</span>개의 레시피를 찾았습니다.</p>
+        </div>
+
+        <div id="result-container"></div>
+    </main>
+
+    <footer>
+        <p>© 2023 Cookit. For University Project.</p>
+    </footer>
+
+    <script>
+        // 1. 요리 데이터베이스 (우리가 만든 파일 정보들)
+        // keywords에 재료 이름을 영어와 한글로 적어두면 검색됩니다.
+        const recipes = [
+            {
+                name: "Spicy Kimchi Stew",
+                sub: "한국인의 소울푸드 김치찌개",
+                img: "https://via.placeholder.com/600x400/FF6B35/FFFFFF?text=Kimchi+Stew",
+                link: "kimchi.html",
+                keywords: ["kimchi", "pork", "stew", "김치", "돼지고기", "찌개"]
+            },
+            {
+                name: "Cream Pasta",
+                sub: "꾸덕하고 고소한 크림 파스타",
+                img: "https://via.placeholder.com/600x400/FFD166/FFFFFF?text=Cream+Pasta",
+                link: "pasta.html",
+                keywords: ["pasta", "cream", "milk", "bacon", "파스타", "크림", "우유", "베이컨"]
+            },
+            {
+                name: "Beef Steak",
+                sub: "육즙 가득 등심 스테이크",
+                img: "https://via.placeholder.com/600x400/5D4037/FFFFFF?text=Beef+Steak",
+                link: "steak.html",
+                keywords: ["steak", "beef", "meat", "스테이크", "소고기", "고기"]
+            },
+            {
+                name: "Avocado Toast",
+                sub: "홈카페 감성 아보카도 토스트",
+                img: "https://via.placeholder.com/600x400/81C784/FFFFFF?text=Avocado+Toast",
+                link: "toast.html",
+                keywords: ["toast", "bread", "avocado", "egg", "토스트", "빵", "아보카도", "계란"]
+            },
+            {
+                name: "Salmon Salad",
+                sub: "신선한 훈제 연어 샐러드",
+                img: "https://via.placeholder.com/600x400/FF8A80/FFFFFF?text=Salmon+Salad",
+                link: "salmon.html",
+                keywords: ["salmon", "salad", "vegetable", "onion", "연어", "샐러드", "양파"]
+            },
+            {
+                name: "Bibimbap",
+                sub: "건강한 한 그릇 비빔밥",
+                img: "https://via.placeholder.com/600x400/FF5722/FFFFFF?text=Bibimbap",
+                link: "bibimbap.html",
+                keywords: ["rice", "vegetable", "egg", "spicy", "비빔밥", "계란", "밥"]
+            },
+            {
+                name: "Chicken Curry",
+                sub: "밥도둑 치킨 카레",
+                img: "https://via.placeholder.com/600x400/FBC02D/FFFFFF?text=Chicken+Curry",
+                link: "curry.html",
+                keywords: ["curry", "chicken", "potato", "onion", "카레", "닭고기", "양파"]
+            },
+            {
+                name: "Egg Fried Rice",
+                sub: "초간단 계란 볶음밥",
+                img: "https://via.placeholder.com/600x400/FDD835/FFFFFF?text=Egg+Fried+Rice",
+                link: "friedrice.html",
+                keywords: ["egg", "rice", "green onion", "fried", "계란", "밥", "볶음밥"]
+            },
+            {
+                name: "Fruit Sherbet",
+                sub: "시원한 과일 샤베트",
+                img: "https://via.placeholder.com/600x400/E91E63/FFFFFF?text=Fruit+Sherbet",
+                link: "sherbet.html",
+                keywords: ["fruit", "ice", "dessert", "strawberry", "과일", "샤베트", "딸기"]
+            }
+        ];
+
+        // 2. 검색어 가져오기 및 실행 로직
+        window.onload = function() {
+            // 주소창에서 ?q=egg 같은 검색어를 가져옵니다.
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q'); // 'egg'
+
+            if (query) {
+                const searchWord = query.toLowerCase(); // 소문자로 변환 (Egg -> egg)
+                document.getElementById('search-keyword').innerText = query;
+
+                // 데이터베이스에서 검색어가 포함된 요리만 찾습니다.
+                const filtered = recipes.filter(item => {
+                    // 이름이나 키워드(재료) 중에 검색어가 있는지 확인
+                    return item.name.toLowerCase().includes(searchWord) || 
+                           item.keywords.some(k => k.toLowerCase().includes(searchWord));
+                });
+
+                // 결과 개수 표시
+                document.getElementById('result-count').innerText = filtered.length;
+
+                // 결과 화면에 뿌리기
+                const container = document.getElementById('result-container');
+                
+                if (filtered.length === 0) {
+                    container.innerHTML = '<div class="no-result">해당하는 재료의 요리가 없습니다. 😢<br>다른 재료로 검색해보세요!</div>';
+                } else {
+                    filtered.forEach(recipe => {
+                        // 스케치하신 모양대로 HTML을 만듭니다.
+                        const html = `
+                            <a href="${recipe.link}" class="result-card">
+                                <img src="${recipe.img}" class="result-img" alt="${recipe.name}">
+                                <div class="result-info">
+                                    <div class="result-title">${recipe.name}</div>
+                                    <div class="result-subtitle">${recipe.sub}</div>
+                                </div>
+                            </a>
+                        `;
+                        container.innerHTML += html;
+                    });
+                }
+            } else {
+                document.getElementById('search-keyword').innerText = "없음";
+                document.getElementById('result-container').innerHTML = '<div class="no-result">검색어를 입력해주세요.</div>';
+            }
+        };
+    </script>
+
+</body>
+</html>

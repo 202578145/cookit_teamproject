@@ -17,8 +17,8 @@
         <section class="hero">
             <div class="search-container">
                 <div class="search-bar">
-                    <input type="text" placeholder="What's in your fridge? (냉장고에 뭐가 있나요?)">
-                    <button class="find-btn">Find Recipes</button>
+                    <input type="text" id="searchInput" placeholder="What's in your fridge? (ex. egg, onion)">
+                    <button class="find-btn" onclick="goSearch()">Find Recipes</button>
                 </div>
                 <div class="tags">
                     <span>🥚 Eggs</span>
@@ -178,6 +178,17 @@
             document.getElementById("today-link").href = selectedMenu.link;
 
             alert("오늘의 메뉴가 '" + selectedMenu.name + "'(으)로 변경되었습니다!");
+        }
+
+        // ▼ 추가됨: 검색 기능 함수
+        function goSearch() {
+            const input = document.getElementById('searchInput').value;
+            if (input.trim() === "") {
+                alert("재료를 입력해주세요!");
+                return;
+            }
+            // search.html 페이지로 검색어를 가지고 이동합니다!
+            window.location.href = "search.html?q=" + encodeURIComponent(input);
         }
     </script>
 
