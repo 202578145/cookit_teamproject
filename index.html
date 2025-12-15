@@ -45,8 +45,12 @@
         </section>
 
         <section class="container all-recipes">
-            <h2>All Recipes</h2>
-            <div class="recipe-grid">
+            <div class="recipe-header-box">
+                <h2>All Recipes</h2>
+                <button id="view-more-btn" onclick="toggleRecipes()" title="더 보기">&gt;</button>
+            </div>
+
+            <div class="recipe-grid" id="recipe-list">
                 
                 <a href="friedrice.html" style="text-decoration: none; color: inherit;">
                     <div class="recipe-card">
@@ -99,7 +103,7 @@
 
                 <a href="curry.html" style="text-decoration: none; color: inherit;">
                     <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/FBC02D/FFFFFF?text=Curry" alt="Chicken Curry">
+                        <img src="https://via.placeholder.com/300x200/FBC02D/FFFFFF?text=Chicken+Curry" alt="Chicken Curry">
                         <h4>Chicken Curry</h4>
                     </div>
                 </a>
@@ -180,15 +184,29 @@
             alert("오늘의 메뉴가 '" + selectedMenu.name + "'(으)로 변경되었습니다!");
         }
 
-        // ▼ 추가됨: 검색 기능 함수
         function goSearch() {
             const input = document.getElementById('searchInput').value;
             if (input.trim() === "") {
                 alert("재료를 입력해주세요!");
                 return;
             }
-            // search.html 페이지로 검색어를 가지고 이동합니다!
             window.location.href = "search.html?q=" + encodeURIComponent(input);
+        }
+
+        // ▼▼ 추가됨: 더 보기 버튼 기능 함수 ▼▼
+        function toggleRecipes() {
+            const list = document.getElementById('recipe-list');
+            const btn = document.getElementById('view-more-btn');
+
+            list.classList.toggle('expanded');
+
+            if (list.classList.contains('expanded')) {
+                btn.innerHTML = "&and;"; // 접기 모양(∧)
+                btn.title = "접기";
+            } else {
+                btn.innerHTML = "&gt;"; // 더보기 모양(>)
+                btn.title = "더 보기";
+            }
         }
     </script>
 

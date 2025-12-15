@@ -312,3 +312,54 @@ footer {
         width: 100%;
     }
 }
+
+/* --- 더 보기 기능 스타일 --- */
+
+/* 제목과 > 버튼 가로 배치 */
+.recipe-header-box {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    gap: 15px; /* 제목과 버튼 사이 간격 */
+    margin-bottom: 20px;
+}
+
+/* > 버튼 디자인 */
+#view-more-btn {
+    background-color: transparent;
+    border: 2px solid #FF6B35;
+    color: #FF6B35;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; /* 동그라미 모양 */
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#view-more-btn:hover {
+    background-color: #FF6B35;
+    color: white;
+}
+
+/* ★ 핵심: 기본적으로 4번째 요리부터는 숨김 처리 ★ */
+/* :nth-child(n+4)는 "4번째 녀석부터 끝까지"라는 뜻입니다 */
+.recipe-grid a:nth-child(n+4) {
+    display: none;
+}
+
+/* ★ 펼쳐졌을 때(.expanded)는 모두 보여주기 ★ */
+.recipe-grid.expanded a:nth-child(n+4) {
+    display: block; /* 다시 보이게 함 */
+}
+
+/* (반응형) 모바일에서는 3개가 세로로 너무 길 수 있으니, 모바일은 처음부터 다 보여줘도 됩니다 */
+/* 원하시면 이 부분은 빼셔도 됩니다 */
+@media (max-width: 768px) {
+    .recipe-grid a:nth-child(n+4) {
+        display: block; /* 모바일은 그냥 다 보여줌 */
+    }
+    #view-more-btn {
+        display: none; /* 모바일에서 버튼 숨김 */
+    }
+}
