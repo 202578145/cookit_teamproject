@@ -31,22 +31,22 @@
                     <button class="find-btn" onclick="goSearch()">Find Recipes</button>
                 </div>
                 <div class="tags">
-    <a href="https://github.com/202578145/cookit_teamproject" target="_blank" style="text-decoration: none; color: inherit;">
-        <span>🐙 GitHub</span>
-    </a>
+                    <a href="https://github.com/202578145/cookit_teamproject" target="_blank" style="text-decoration: none; color: inherit;">
+                        <span>🐙 GitHub</span>
+                    </a>
 
-    <span onclick="toggleSound()" style="cursor: pointer;">
-        <span id="sound-icon">🔇</span> <span id="sound-text">BGM Off</span>
-    </span>
+                    <span onclick="toggleSound()" style="cursor: pointer;">
+                        <span id="sound-icon">🔇</span> <span id="sound-text">BGM Off</span>
+                    </span>
 
-    <span onclick="toggleRain()" style="cursor: pointer;">
-    <span id="rain-icon">🌧️</span> <span id="rain-text">Food Rain</span>
-</span>
-</div>
+                    <span onclick="toggleRain()" style="cursor: pointer;">
+                        <span id="rain-icon">🌧️</span> <span id="rain-text">Food Rain</span>
+                    </span>
+                </div>
 
-<audio id="bgmAudio" loop>
-    <source src="bgm.mp3" type="audio/mp3">
-</audio>
+                <audio id="bgmAudio" loop>
+                    <source src="bgm.mp3" type="audio/mp3">
+                </audio>
             </div>
         </section>
 
@@ -54,7 +54,7 @@
             <h2>Today's Pick</h2>
             <a id="today-link" href="kimchi.html" style="text-decoration: none; color: inherit;">
                 <div class="pick-card">
-                    <img id="today-img" src="https://via.placeholder.com/600x400/FF6B35/FFFFFF?text=Spicy+Kimchi+Stew" style="width:100%; height:300px; object-fit:cover; border-radius: 15px 15px 0 0;">
+                    <img id="today-img" src="kimchi.jpg" style="width:100%; height:300px; object-fit:cover; border-radius: 15px 15px 0 0;">
                     <div class="card-content">
                         <h3 id="today-title">Spicy Kimchi Stew</h3>
                         <p>오늘의 추천 메뉴를 확인해보세요!</p>
@@ -73,21 +73,21 @@
             <div class="recipe-grid">
                 <a href="friedrice.html" style="text-decoration: none; color: inherit;">
                     <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/FDD835/FFFFFF?text=Egg+Fried+Rice" alt="Egg Fried Rice">
+                        <img src="friedrice.jpg" alt="Egg Fried Rice">
                         <h4>Egg Fried Rice</h4>
                     </div>
                 </a>
 
                 <a href="pasta.html" style="text-decoration: none; color: inherit;">
                     <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/FFD166/FFFFFF?text=Pasta" alt="Pasta Carbonara">
+                        <img src="pasta.jpg" alt="Pasta Carbonara">
                         <h4>Pasta Carbonara</h4>
                     </div>
                 </a>
 
                 <a href="kimchi.html" style="text-decoration: none; color: inherit;">
                     <div class="recipe-card">
-                        <img src="https://via.placeholder.com/300x200/FF6B35/FFFFFF?text=Kimchi+Stew" alt="Kimchi Stew">
+                        <img src="kimchi.jpg" alt="Kimchi Stew">
                         <h4>Kimchi Stew</h4>
                     </div>
                 </a>
@@ -101,16 +101,17 @@
 
     <script>
         function changeMenu() {
+            // ▼ 수정됨: 랜덤 메뉴 리스트의 이미지 주소도 전부 파일명으로 교체!
             const menus = [
-                { name: "Spicy Kimchi Stew", img: "https://via.placeholder.com/600x400/FF6B35/FFFFFF?text=Kimchi+Stew", link: "kimchi.html" },
-                { name: "Cream Pasta", img: "https://via.placeholder.com/600x400/FFD166/FFFFFF?text=Cream+Pasta", link: "pasta.html" },
-                { name: "Beef Steak", img: "https://via.placeholder.com/600x400/073B4C/FFFFFF?text=Beef+Steak", link: "steak.html" },
-                { name: "Avocado Toast", img: "https://via.placeholder.com/600x400/81C784/FFFFFF?text=Avocado+Toast", link: "toast.html" },
-                { name: "Salmon Salad", img: "https://via.placeholder.com/600x400/FF8A80/FFFFFF?text=Salmon+Salad", link: "salmon.html" },
-                { name: "Bibimbap", img: "https://via.placeholder.com/600x400/FF5722/FFFFFF?text=Bibimbap", link: "bibimbap.html" },
-                { name: "Chicken Curry", img: "https://via.placeholder.com/600x400/FBC02D/FFFFFF?text=Chicken+Curry", link: "curry.html" },
-                { name: "Egg Fried Rice", img: "https://via.placeholder.com/600x400/FDD835/FFFFFF?text=Egg+Fried+Rice", link: "friedrice.html" },
-                { name: "Fruit Sherbet", img: "https://via.placeholder.com/600x400/E91E63/FFFFFF?text=Fruit+Sherbet", link: "sherbet.html" }
+                { name: "Spicy Kimchi Stew", img: "kimchi.jpg", link: "kimchi.html" },
+                { name: "Cream Pasta", img: "pasta.jpg", link: "pasta.html" },
+                { name: "Beef Steak", img: "steak.jpg", link: "steak.html" },
+                { name: "Avocado Toast", img: "toast.jpg", link: "toast.html" },
+                { name: "Salmon Salad", img: "salmon.jpg", link: "salmon.html" },
+                { name: "Bibimbap", img: "bibimbap.jpg", link: "bibimbap.html" },
+                { name: "Chicken Curry", img: "curry.jpg", link: "curry.html" },
+                { name: "Egg Fried Rice", img: "friedrice.jpg", link: "friedrice.html" },
+                { name: "Fruit Sherbet", img: "sherbet.jpg", link: "sherbet.html" }
             ];
             const randomIndex = Math.floor(Math.random() * menus.length);
             const selectedMenu = menus[randomIndex];
@@ -130,79 +131,64 @@
         }
 
         // --- 스피커 아이콘 & 음악 토글 기능 ---
-function toggleSound() {
-    const audio = document.getElementById('bgmAudio');
-    const icon = document.getElementById('sound-icon');
-    const text = document.getElementById('sound-text');
+        function toggleSound() {
+            const audio = document.getElementById('bgmAudio');
+            const icon = document.getElementById('sound-icon');
+            const text = document.getElementById('sound-text');
 
-    if (audio.paused) {
-        // 음악이 꺼져있다면 -> 켠다!
-        audio.play().catch(error => {
-            alert("음악 파일을 재생할 수 없어요! (bgm.mp3가 있는지 확인하세요)");
-        });
-        icon.innerText = "🔊"; // 아이콘을 소리 나는 모양으로 변경
-        text.innerText = "BGM On";
-    } else {
-        // 음악이 켜져있다면 -> 끈다!
-        audio.pause();
-        icon.innerText = "🔇"; // 아이콘을 음소거 모양으로 변경
-        text.innerText = "BGM Off";
-    }
-}
+            if (audio.paused) {
+                audio.play().catch(error => {
+                    alert("음악 파일을 재생할 수 없어요! (bgm.mp3가 있는지 확인하세요)");
+                });
+                icon.innerText = "🔊";
+                text.innerText = "BGM On";
+            } else {
+                audio.pause();
+                icon.innerText = "🔇";
+                text.innerText = "BGM Off";
+            }
+        }
 
-// --- 재료 비 내리기 효과 기능 ---
-let rainInterval; // 비 내리는 타이머를 저장할 변수
+        // --- 재료 비 내리기 효과 기능 ---
+        let rainInterval; 
 
-function toggleRain() {
-    const icon = document.getElementById('rain-icon');
-    const text = document.getElementById('rain-text');
-    const container = document.body; // 이모지가 내릴 공간
+        function toggleRain() {
+            const icon = document.getElementById('rain-icon');
+            const text = document.getElementById('rain-text');
+            const container = document.body; 
 
-    if (rainInterval) {
-        // 이미 내리고 있다면 -> 멈춘다!
-        clearInterval(rainInterval);
-        rainInterval = null;
-        icon.innerText = "🌧️";
-        text.innerText = "Food Rain";
-        
-        // 화면에 남아있는 음식들 싹 지우기
-        const foods = document.querySelectorAll('.food-emoji');
-        foods.forEach(e => e.remove());
-        
-    } else {
-        // 안 내리고 있다면 -> 내리게 한다!
-        icon.innerText = "☀️"; // 멈춤(해) 아이콘으로 변경
-        text.innerText = "Stop Rain";
+            if (rainInterval) {
+                clearInterval(rainInterval);
+                rainInterval = null;
+                icon.innerText = "🌧️";
+                text.innerText = "Food Rain";
+                
+                const foods = document.querySelectorAll('.food-emoji');
+                foods.forEach(e => e.remove());
+                
+            } else {
+                icon.innerText = "☀️"; 
+                text.innerText = "Stop Rain";
 
-        // 떨어질 음식 재료 리스트
-        const foodList = ['🥦', '🥕', '🍎', '🥩', '🍤', '🍳', '🧀', '🥓', '🧅', '🍄'];
+                const foodList = ['🥦', '🥕', '🍎', '🥩', '🍤', '🍳', '🧀', '🥓', '🧅', '🍄'];
 
-        // 0.3초마다 하나씩 생성
-        rainInterval = setInterval(() => {
-            const el = document.createElement('div');
-            el.classList.add('food-emoji');
-            
-            // 랜덤한 음식 고르기
-            el.innerText = foodList[Math.floor(Math.random() * foodList.length)];
-            
-            // 랜덤한 위치(가로)에서 시작
-            el.style.left = Math.random() * 100 + 'vw';
-            
-            // 떨어지는 속도 랜덤하게 (2초 ~ 5초 사이)
-            el.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            
-            // 크기 랜덤하게
-            el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                rainInterval = setInterval(() => {
+                    const el = document.createElement('div');
+                    el.classList.add('food-emoji');
+                    
+                    el.innerText = foodList[Math.floor(Math.random() * foodList.length)];
+                    el.style.left = Math.random() * 100 + 'vw';
+                    el.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    el.style.fontSize = (Math.random() * 20 + 20) + 'px';
 
-            container.appendChild(el);
+                    container.appendChild(el);
 
-            // 5초 뒤에 스스로 사라지게 (메모리 관리)
-            setTimeout(() => {
-                el.remove();
-            }, 5000);
-        }, 300);
-    }
-}
+                    setTimeout(() => {
+                        el.remove();
+                    }, 5000);
+                }, 300);
+            }
+        }
     </script>
 </body>
 </html>
