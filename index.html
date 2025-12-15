@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookit - 오늘의 요리를 찾아보세요</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">Cookit</h1>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="What's in your fridge? (냉장고에 뭐가 있나요?)">
+                    <button class="find-btn">Find Recipes</button>
+                </div>
+                <div class="tags">
+                    <span>🥚 Eggs</span>
+                    <span>🧅 Onion</span>
+                    <span>🍅 Tomato</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container todays-pick">
+            <h2>Today's Pick</h2>
+            <div class="pick-card">
+                <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400/FF6B35/FFFFFF?text=Spicy+Kimchi+Stew');"></div>
+                <div class="card-content">
+                    <h3>Spicy Kimchi Stew</h3>
+                    <p>한국인의 소울 푸드, 얼큰하고 깊은 맛의 김치찌개입니다. 밥 한 공기 뚝딱!</p>
+                    <button class="refresh-btn" title="다른 메뉴 보기">🔄</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="container all-recipes">
+            <h2>All Recipes</h2>
+            <div class="recipe-grid">
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300x200/FFD166/FFFFFF?text=Pasta" alt="Pasta Carbonara">
+                    <h4>Pasta Carbonara</h4>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300x200/06D6A0/FFFFFF?text=Avocado" alt="Avocado Toast">
+                    <h4>Avocado Toast</h4>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300x200/118AB2/FFFFFF?text=Salmon" alt="Grilled Salmon">
+                    <h4>Grilled Salmon</h4>
+                </div>
+                 <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300x200/EF476F/FFFFFF?text=Salad" alt="Caesar Salad">
+                    <h4>Caesar Salad</h4>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300x200/073B4C/FFFFFF?text=Steak" alt="Beef Steak">
+                    <h4>Beef Steak</h4>
+                </div>
+                <div class="recipe-card">
+                    <img src="https://via.placeholder.com/300x200/B5179E/FFFFFF?text=Curry" alt="Chicken Curry">
+                    <h4>Chicken Curry</h4>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 Cookit. For University Project.</p>
+    </footer>
+
+</body>
+</html>

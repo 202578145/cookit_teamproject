@@ -1,0 +1,212 @@
+/* 기본 스타일 리셋 및 폰트 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFF9F0; /* 따뜻한 베이지색 배경 */
+    color: #333;
+}
+
+/* 공통 컨테이너 스타일 */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #4A4A4A;
+}
+
+/* --- 헤더 --- */
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #FFF9F0;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FF6B35; /* 오렌지색 로고 */
+}
+
+/* --- 상단 검색 섹션 (Hero) --- */
+.hero {
+    /* 실제 음식 배경 이미지를 넣으려면 아래 url을 수정하세요 */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://via.placeholder.com/1200x400/FF9F1C/FFFFFF?text=Food+Background');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.search-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.search-bar {
+    display: flex;
+    background: white;
+    padding: 5px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.search-bar input {
+    flex-grow: 1;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1rem;
+    border-radius: 50px 0 0 50px;
+    outline: none;
+}
+
+.find-btn {
+    background-color: #FF6B35;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.find-btn:hover {
+    background-color: #E85A2A;
+}
+
+.tags {
+    margin-top: 15px;
+}
+
+.tags span {
+    display: inline-block;
+    background-color: rgba(255,255,255,0.8);
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin: 0 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* --- 오늘의 추천 메뉴 --- */
+.pick-card {
+    display: flex;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.card-image {
+    flex: 1;
+    min-height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-content {
+    flex: 1;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #FF6B35;
+}
+
+.card-content p {
+    line-height: 1.6;
+    color: #666;
+}
+
+.refresh-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: none;
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #999;
+    transition: all 0.3s;
+}
+
+.refresh-btn:hover {
+    border-color: #FF6B35;
+    color: #FF6B35;
+    transform: rotate(180deg);
+}
+
+/* --- 전체 레시피 그리드 --- */
+.recipe-grid {
+    display: grid;
+    /* 화면 크기에 따라 컬럼 수가 자동으로 조절되는 반응형 그리드 */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.recipe-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.recipe-card h4 {
+    padding: 15px;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #4A4A4A;
+}
+
+/* --- 푸터 --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* --- 모바일 반응형 처리 --- */
+@media (max-width: 768px) {
+    .logo { font-size: 2rem; }
+    .hero { padding: 50px 20px; }
+    .search-bar { flex-direction: column; padding: 10px; border-radius: 15px; }
+    .search-bar input { border-radius: 10px; margin-bottom: 10px; text-align: center; }
+    .find-btn { width: 100%; border-radius: 10px; }
+    .pick-card { flex-direction: column; }
+    .card-image { height: 200px; }
+}
