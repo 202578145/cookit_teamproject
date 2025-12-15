@@ -210,3 +210,105 @@ footer {
     .pick-card { flex-direction: column; }
     .card-image { height: 200px; }
 }
+
+/* --- 상세 페이지 (detail.html) 디자인 --- */
+
+/* 상단 사진과 제목 배치 */
+.recipe-header {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.recipe-img img {
+    width: 100%;
+    max-width: 500px; /* 사진 최대 크기 */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.recipe-info {
+    flex: 1;
+}
+
+.recipe-title {
+    font-size: 2.5rem;
+    color: #FF6B35;
+    margin-bottom: 10px;
+}
+
+.recipe-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.recipe-desc {
+    line-height: 1.8;
+    color: #666;
+}
+
+/* 구분선 */
+.divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 40px 0;
+}
+
+/* 재료와 조리법 */
+.recipe-details h3, .youtube-link h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    border-left: 5px solid #FF6B35; /* 제목 옆에 주황색 포인트 줄 */
+    padding-left: 10px;
+}
+
+.ingredients ul, .instructions ol {
+    margin-bottom: 40px;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.ingredients li {
+    list-style-type: circle;
+}
+
+/* 유튜브 버튼 */
+.youtube-link {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #fff0e6;
+    border-radius: 15px;
+}
+
+.youtube-btn {
+    display: inline-block;
+    background-color: #FF0000; /* 유튜브 빨간색 */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 15px;
+    transition: transform 0.2s;
+}
+
+.youtube-btn:hover {
+    transform: scale(1.05); /* 마우스 올리면 살짝 커짐 */
+}
+
+/* 모바일 화면에서는 세로로 배치 */
+@media (max-width: 768px) {
+    .recipe-header {
+        flex-direction: column;
+    }
+    .recipe-img img {
+        width: 100%;
+    }
+}
